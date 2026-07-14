@@ -25,7 +25,8 @@ let users = [
 
 // GET request: Retrieve all users
 router.get("/", (req, res) => {
-    res.send(users);
+    // Send a JSON response formatted with an indentation of 4 spaces
+    res.send(JSON.stringify({ users }, null, 4));
 });
 
 // GET by specific ID request: Retrieve a single user with email ID
