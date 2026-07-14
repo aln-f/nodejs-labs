@@ -43,6 +43,22 @@ router.get("/lastName/:lastName", (req, res) => {
     res.send(filtered_users);
 });
 
+// Convert a date string in the format "dd-mm-yyyy" to a Date object
+function getDateFromString(strDate) {
+    let [dd, mm, yyyy] = strDate.split('-');
+    return new Date(yyyy + "/" + mm + "/" + dd);
+}
+
+// Define a route handler for GET requests to the "/sort" endpoint
+router.get("/sort/DOB", (req, res) => {
+    let sorted_users = users.sort(function (a, b) {
+        let d1 = getDateFromString(a.DOB);
+        let d2 = getDateFromString(b.DOB);
+        return d1 - d2;
+    });
+    res.send(JSON.stringify({ sorted_users }, null, 4));
+});
+
 // POST request: Create a new user
 router.post("/", (req, res) => {
     users.push({
