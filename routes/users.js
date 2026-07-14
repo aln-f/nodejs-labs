@@ -6,39 +6,39 @@ let users = [
     {
         firstName: "John",
         lastName: "wick",
-        email:"johnwick@gamil.com",
-        DOB:"22-01-1990",
+        email: "johnwick@gmail.com",
+        DOB: "22-01-1990",
     },
     {
         firstName: "John",
         lastName: "smith",
-        email:"johnsmith@gamil.com",
-        DOB:"21-07-1983",
+        email: "johnsmith@gmail.com",
+        DOB: "21-07-1983",
     },
     {
         firstName: "Joyal",
         lastName: "white",
-        email:"joyalwhite@gamil.com",
-        DOB:"21-03-1989",
+        email: "joyalwhite@gmail.com",
+        DOB: "21-03-1989",
     },
 ];
 
 // GET request: Retrieve all users
-router.get("/",(req,res)=>{
-  res.send(users);
+router.get("/", (req, res) => {
+    res.send(users);
 });
 
 // GET by specific ID request: Retrieve a single user with email ID
-router.get("/:email",(req,res)=>{
-  const email = req.params.email;
+router.get("/:email", (req, res) => {
+    const email = req.params.email;
     let filtered_users = users.filter((user) => user.email === email);
     res.send(filtered_users);
 });
 
 
 // POST request: Create a new user
-router.post("/",(req,res)=>{
-  users.push({
+router.post("/", (req, res) => {
+    users.push({
         "firstName": req.query.firstName,
         "lastName": req.query.lastName,
         "email": req.query.email,
@@ -61,4 +61,4 @@ router.delete("/:email", (req, res) => {
   res.send("Yet to be implemented")//This line is to be replaced with actual return value
 });
 
-module.exports=router;
+module.exports = router;
